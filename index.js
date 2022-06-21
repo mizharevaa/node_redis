@@ -4,7 +4,7 @@ import Redis from 'ioredis';
 const redis = new Redis()
 
 async function Redis_work(in_str){
-    return await redis.ping(in_str)
+    return await redis.ping(in_str, (err, result)=>console.log(err))
 }
 
 const PORT = '5000'
