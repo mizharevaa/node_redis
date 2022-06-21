@@ -1,5 +1,5 @@
-import  {express} from 'express';
-import {Redis} from 'ioredis';
+import  express from 'express';
+import Redis from 'ioredis';
 
 const redis = new Redis()
 
