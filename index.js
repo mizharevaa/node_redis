@@ -4,7 +4,7 @@ import Redis from 'ioredis';
 const redis = new Redis()
 
 async function Redis_work(in_str){
-    return await redis.ping(in_str, (err, result)=>console.log(err))
+    return await redis.ping(in_str)
 }
 
 const PORT = '5000'
@@ -14,6 +14,7 @@ app.use(express.json())
 
 app.get('/', (req, res)=>{
     // res.status(200).json('это json, честно!')
+    console.log(Redis_work(req.query.echo))
     const answer = Redis_work(req.query.echo)
     if(answer === req.query.echo) {
         res.status(200).json(answer)
