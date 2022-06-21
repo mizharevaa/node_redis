@@ -1,7 +1,7 @@
 import  express from 'express';
 import Redis from 'ioredis';
 
-const redis = new Redis("redis://:sogs2022@127.0.0.1:6379/0");
+const redis = new Redis();
 
 async function Redis_work(in_str){
     const asw = await redis.ping(in_str)
@@ -14,9 +14,9 @@ const app = express()
 
 app.use(express.json())
 
-app.get('/', (req, res)=>{
+app.get('/', async (req, res)=>{
    
-    const answer = Redis_work(req.query.echo)
+    const answer = await Redis_work(req.query.echo)
     if(answer === req.query.echo) {
         res.status(200).json(answer)
     } else {
