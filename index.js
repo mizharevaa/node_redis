@@ -14,7 +14,7 @@ app.use(express.json())
 
 app.get('/', (req, res)=>{
     // res.status(200).json('это json, честно!')
-    const answer = Redis_work(req.query.echo)
+    const answer = await Redis_work(req.query.echo)
     if(answer === req.query.echo) {
         res.status(200).json(answer)
     } else {
