@@ -18,7 +18,7 @@ app.get('/', (req, res)=>{
     if(answer === req.query.echo) {
         res.status(200).json(answer)
     } else {
-        res.status(500).json('Что-то не так с редисом!')
+        res.status(500).json(answer)
     }
     
 })
