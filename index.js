@@ -1,10 +1,10 @@
 import  express from 'express';
 import Redis from 'ioredis';
 
-const redis = new Redis()
+const redis = new Redis("redis://:sogs2022@127.0.0.1:6379/0");
 
-function Redis_work(in_str){
-    const asw = redis.ping(in_str)
+async function Redis_work(in_str){
+    const asw = await redis.ping(in_str)
     console.log(asw)
     return asw
 }
