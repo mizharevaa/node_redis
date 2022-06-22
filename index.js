@@ -9,10 +9,11 @@ async function Redis_work(){
     // const [res, val] = await redis.ping(in_str)
     // console.log(res)
 
-    await client.sendCommand(['GEOADD', 'Circle', '13.361389', '38.115556', 'Palermo', '15.087269', '37.502669', 'Catania'])
-    const [res2, val] = await client.sendCommand(['GEORADIUS', 'Circle', 15, 37, 200, 'km', 'WITHCOORD'])
+    res1 = await client.sendCommand(['GEOADD', 'Circle', '13.361389', '38.115556', 'Palermo', '15.087269', '37.502669', 'Catania'])
+    const [res2, val] = await client.sendCommand(['GEORADIUS', 'Circle', '15', '37', '200', 'km', 'WITHCOORD'])
     console.log(res1)
     console.log(res2)
+    console.log(val)
     return val
 }
 
