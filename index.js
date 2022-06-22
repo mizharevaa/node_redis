@@ -1,13 +1,21 @@
 import  express from 'express';
-import { createClient } from 'ioredis';
+import { createClient } from 'redis';
 
 const redis = new createClient();
 await redis.connect();
 
 async function Redis_work(in_str){
-    const [res, val] = await redis.ping(in_str)
+    // const [res, val] = await redis.ping(in_str)
+    // console.log(res)
+
+    const [res, val] = await redis
+        .multy()
+        .geoadd('Circle','13.361389', '38.115556', 'Palermo', '15.087269', '37.502669', 'Catania')
+        .georadius('Circle','15', '37', 200, 'km', 'WITHCOORD')
+        .exec()
     console.log(res)
-    return res
+
+    return val
 }
 
 const PORT = '5000'
