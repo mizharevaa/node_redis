@@ -1,12 +1,13 @@
 import  express from 'express';
-import Redis from 'ioredis';
+import { createClient } from 'ioredis';
 
-const redis = new Redis();
+const redis = new createClient();
+await redis.connect();
 
 async function Redis_work(in_str){
-    const asw = await redis.ping(in_str)
-    console.log(asw)
-    return asw
+    const [res, val] = await redis.ping(in_str)
+    console.log(res)
+    return res
 }
 
 const PORT = '5000'
