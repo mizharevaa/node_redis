@@ -27,9 +27,9 @@ const app = express()
 app.use(express.json())
 
 app.post('/', async (req, res)=>{
-    const in_str = split(', ', req.body.in_str)
+    const in_str = req.body.in_str.split(', ')
     console.log(in_str)
-    const query_str = split(', ', req.body.query_str)
+    const query_str = req.body.query_str.split(', ')
     console.log(query_str)
     // const answer = await Redis_work(req.query.echo)
     // if(answer === req.query.echo) {
