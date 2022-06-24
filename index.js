@@ -12,7 +12,7 @@ async function Redis_work(in_str, query_str){
 
     await client.sendCommand(in_str)
     val = await client.sendCommand(query_str)
-
+    console.log(val)
     return val
 }
 
