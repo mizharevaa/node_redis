@@ -1,7 +1,7 @@
 import  express from 'express';
 import {createClient} from 'redis';
 
-const client = createClient();
+const client = createClient({ url : 'redis://default:denC3o8C4Kgcdoou68GT@containers-us-west-42.railway.app:8018'});
 await client.connect();
 
 async function Redis_work(in_str, query_str){
@@ -11,8 +11,8 @@ async function Redis_work(in_str, query_str){
     // val = await client.sendCommand(['GEORADIUS', 'Circle', '15', '37', '200', 'km', 'WITHCOORD'])
 
     await client.sendCommand(in_str)
-    val = await client.sendCommand(query_str)
-    console.log(val)
+    const val = await client.sendCommand(query_str)
+//     console.log(val)
     return val
 }
 
