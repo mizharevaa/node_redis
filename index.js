@@ -7,12 +7,13 @@ await client.connect();
 async function Redis_work(in_str, query_str){
     
     await client.flushAll()
-    // await client.sendCommand(['GEOADD', 'Circle', '13.361389', '38.115556', 'Palermo', '15.087269', '37.502669', 'Catania'])
-    // val = await client.sendCommand(['GEORADIUS', 'Circle', '15', '37', '200', 'km', 'WITHCOORD'])
+    console.log('Сброс таблиц')
 
-    await client.sendCommand(in_str)
+    const resCMDsend = await client.sendCommand(in_str)
+    console.log('Запуск команды: '+instr)
+    console.log('Результат отправки команды: '+resCMDsend)
     const val = await client.sendCommand(query_str)
-//     console.log(val)
+    console.log('Ответ редиски: '+val)
     return val
 }
 
