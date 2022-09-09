@@ -9,9 +9,11 @@ async function Redis_work(in_str, query_str){
     await client.flushAll()
     console.log('Сброс таблиц')
 
+    console.log('Запуск команды: '+ in_str)
     await client.sendCommand(in_str)
-    console.log('Запуск команды: '+instr)
+    console.log('Команда выполнена'
     
+    console.log('Запуск запроса: '+ query_str)
     const val = await client.sendCommand(query_str)
     console.log('Ответ редиски: '+val)
     return val
