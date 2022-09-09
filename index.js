@@ -9,15 +9,15 @@ async function Redis_work(in_str, query_str){
     await client.flushAll()
     console.log('Сброс таблиц')
 
-    const resCMDsend = await client.sendCommand(in_str)
+    await client.sendCommand(in_str)
     console.log('Запуск команды: '+instr)
-    console.log('Результат отправки команды: '+resCMDsend)
+    
     const val = await client.sendCommand(query_str)
     console.log('Ответ редиски: '+val)
     return val
 }
 
-const PORT = '5000'
+const PORT = '3000'
 const app = express()
 
 app.use(express.json())
