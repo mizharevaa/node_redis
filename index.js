@@ -21,6 +21,15 @@ const app = express()
 
 app.use(express.json())
 
+app.get('/', async (req, res)=>{
+    try {
+        const pong = await client.sendCommand(['PING'])
+        res.status(200).json(pong)
+    } catch (error) {
+        res.status(500).write('Redis client ping fails: '+ error)
+    }
+})
+
 app.post('/', async (req, res)=>{
     const in_str = req.body.in_str.split(', ')
     const query_str = req.body.query_str.split(', ')
